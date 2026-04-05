@@ -1,0 +1,10 @@
+import express from "express";
+import { getTasks, createTask, toggleTask, deleteTask } from "../controllers/task.controller";
+import { auth } from "../middleware/auth";
+const r = express.Router();
+r.use(auth);
+r.get("/", getTasks);
+r.post("/", createTask);
+r.patch("/:id/toggle", toggleTask);
+r.delete("/:id", deleteTask);
+export default r;
